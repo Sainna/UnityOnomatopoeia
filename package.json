@@ -1,0 +1,18 @@
+{
+  "name": "moe.sainna.onomatopoeia",
+  "version": "0.0.1",
+  "displayName": "Onomatopoeia",
+  "description": "Create and display onomatopoeia in Unity",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.4"
+ },
+    "samples": [
+        {
+            "displayName": "Cube Knock",
+            "description": "Contains a cube prefab with that creates a Knock onomatopoeia on hit",
+            "path": "Samples~/CubeKnock"
+        }
+    ]
+}
