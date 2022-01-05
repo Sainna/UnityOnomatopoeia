@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TMAnimColor : TextMeshProAnimations
+namespace Sainna.Onomatopoeia
 {
-    public override void AnimationLoop(TMP_Text textComp, TMP_CharacterInfo charInfo, float normalizedAnimProgress, ref Vector3[] vertices)
+    public class TMAnimColor : TextMeshProAnimations
     {
-        //todo
+        public override void AnimationLoop(TMP_Text textComp, TMP_CharacterInfo charInfo, float normalizedAnimProgress, ref Vector3[] vertices)
+        {
+            //todo
+        }
     }
 }

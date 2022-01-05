@@ -16,7 +16,9 @@
      using UnityEngine;
      using UnityEditor;
      using System.Reflection;
- 
+
+ namespace Sainna.Onomatopoeia.Editor
+ {
      /// <summary>
      /// Extension class for SerializedProperties
      /// See also: http://answers.unity3d.com/questions/627090/convert-serializedproperty-to-custom-class.html
@@ -62,18 +64,18 @@
          /// </summary>
          /// <param name="property">The property that is part of the component</param>
          /// <returns>The root component of the property</returns>
-        public static object GetSerializedPropertyRootObject(SerializedProperty property)
-        {
-            var tar = property.serializedObject.targetObject;
-            object obj = tar as Component;
-            if (obj != null)
-                return obj;
-            obj = tar as ScriptableObject;
-            if (obj != null)
-                return obj;
-            Debug.LogError("Could not get target object on " + property.displayName);
-            return null;
-        }
+         public static object GetSerializedPropertyRootObject(SerializedProperty property)
+         {
+             var tar = property.serializedObject.targetObject;
+             object obj = tar as Component;
+             if (obj != null)
+                 return obj;
+             obj = tar as ScriptableObject;
+             if (obj != null)
+                 return obj;
+             Debug.LogError("Could not get target object on " + property.displayName);
+             return null;
+         }
  
          /// <summary>
          /// Iterates through objects to handle objects that are nested in the root object
@@ -85,21 +87,21 @@
          /// <returns>Returns the nested object casted to the type T</returns>
          public static T GetNestedObject<T>(string path, object obj, bool includeAllBases = false)
          {
-            if(obj == null)
-               Debug.Log($"WTF!! {path}");
+             if(obj == null)
+                 Debug.Log($"WTF!! {path}");
             
-            foreach (string part in path.Split('.'))
-            {
-                Debug.Log($"ettt {part}");
-               obj = GetFieldOrPropertyValue<object>(part, obj, includeAllBases);
-            }
-            return (T)obj;
+             foreach (string part in path.Split('.'))
+             {
+                 Debug.Log($"ettt {part}");
+                 obj = GetFieldOrPropertyValue<object>(part, obj, includeAllBases);
+             }
+             return (T)obj;
          }
  
          public static T GetFieldOrPropertyValue<T>(string fieldName, object obj, bool includeAllBases = false, BindingFlags bindings = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
          {
              if(obj == null)
-               Debug.Log($"????? {fieldName}");
+                 Debug.Log($"????? {fieldName}");
              FieldInfo field = obj.GetType().GetField(fieldName, bindings);
              if (field != null) return (T)field.GetValue(obj);
  
@@ -118,7 +120,7 @@
                      if (property != null) return (T)property.GetValue(obj, null);
                  }
              }
-            Debug.Log($"allo {fieldName} {typeof(T).ToString()}");
+             Debug.Log($"allo {fieldName} {typeof(T).ToString()}");
              return default(T);
          }
  
@@ -172,7 +174,7 @@
              }
              else {
                  allTypes.AddRange(
-                         Enumerable
+                     Enumerable
                          .Repeat(type.BaseType, 1)
                          .Concat(type.GetInterfaces())
                          .Concat(type.BaseType.GetBaseClassesAndInterfaces())
@@ -182,3 +184,4 @@
              return allTypes;
          }
      }
+ }

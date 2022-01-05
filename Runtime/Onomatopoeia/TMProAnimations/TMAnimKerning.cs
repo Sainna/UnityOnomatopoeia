@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TMAnimKerning : TextMeshProAnimations
+namespace Sainna.Onomatopoeia
 {
-
-
-    public float KerningScale = 0.01f;
-
-    public AnimationCurve KerningCurve = null;
-
-    float InitialKerning = float.NaN;
-
-    public override void AnimationLoop(TMP_Text textComp, TMP_CharacterInfo charInfo, float normalizedAnimProgress, ref Vector3[] vertices)
+    public class TMAnimKerning : TextMeshProAnimations
     {
-        if(float.IsNaN(InitialKerning))
-            InitialKerning = textComp.characterSpacing;
 
-        textComp.characterSpacing = InitialKerning + (KerningCurve.Evaluate(normalizedAnimProgress) * KerningScale);
+
+        public float KerningScale = 0.01f;
+
+        public AnimationCurve KerningCurve = null;
+
+        float InitialKerning = float.NaN;
+
+        public override void AnimationLoop(TMP_Text textComp, TMP_CharacterInfo charInfo, float normalizedAnimProgress, ref Vector3[] vertices)
+        {
+            if(float.IsNaN(InitialKerning))
+                InitialKerning = textComp.characterSpacing;
+
+            textComp.characterSpacing = InitialKerning + (KerningCurve.Evaluate(normalizedAnimProgress) * KerningScale);
+        }
     }
 }

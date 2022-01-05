@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+namespace Sainna.Onomatopoeia
+{
 public class ColliderImpact : MonoBehaviour
 {
     //todo: this as list
@@ -506,20 +508,13 @@ public class ColliderImpact : MonoBehaviour
         if(_ScriptActivationOnly || _DisableTriggerEnter)
             return;
 
-        if (col.tag != "PortableObjectsGrabber")
-        {
-            //Cast a sphere to check the actual point of contact of the controller trigger box to the collider
-            //We could also try putting the controller as a solid collider (in order to use OnCollisionEnter), but even with a mass near 0 to glitches out frozen items such as the table
-            // Debug.Log($"{transform.parent.name}/{name} -- felt by {col.transform.parent.name}/{col.transform.name}");
-            RaycastHit hit;
-            // Debug.DrawRay(col.transform.position, (col.ClosestPointOnBounds(transform.position) - col.transform.position) * 100, Color.magenta);
-            // if (Physics.Raycast(col.transform.position, col.ClosestPointOnBounds(transform.position) - col.transform.position, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
-            if (Physics.SphereCast(col.transform.position, 0.005f, col.ClosestPointOnBounds(transform.position) - col.transform.position, out hit, 10.0f))
+        //Cast a sphere to check the actual point of contact of the controller trigger box to the collider
+        //We could also try putting the controller as a solid collider (in order to use OnCollisionEnter), but even with a mass near 0 to glitches out frozen items such as the table
+        RaycastHit hit;
+        if (Physics.SphereCast(col.transform.position, 0.005f, col.ClosestPointOnBounds(transform.position) - col.transform.position, out hit, 10.0f))
             {
-                // Debug.Log($"{transform.parent.name}/{name} -- ray hit by {hit.transform.parent.name}/{hit.transform.name}");
                 if (_SkipTriggerCheck || hit.collider.transform == this.transform || hit.transform == this.transform)
                 {
-                    // Debug.Log($"Hit OK, playing sound");
                     SpawnAnimation(col.transform.position, hit.normal, col);
                 }
             }

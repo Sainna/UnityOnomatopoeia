@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
-public class SpriteFiller : MonoBehaviour
+namespace Sainna.Onomatopoeia
 {
-
-    [SerializeField]
-    UnityEngine.UI.Image _img;
-
-
-    SpeechBubble parentBubble;
-
-    void Awake()
+    [ExecuteAlways]
+    public class SpriteFiller : MonoBehaviour
     {
-        parentBubble = GetComponentInParent<SpeechBubble>();
-    }
 
-    public void SetFill(float v)
-    {
-        _img.fillAmount = parentBubble.OwningOnomatopoeia.SpeechBubbleSizeCurve.Evaluate(v);
+        [SerializeField]
+        UnityEngine.UI.Image _img;
+
+
+        SpeechBubble parentBubble;
+
+        void Awake()
+        {
+            parentBubble = GetComponentInParent<SpeechBubble>();
+        }
+
+        public void SetFill(float v)
+        {
+            _img.fillAmount = parentBubble.OwningOnomatopoeia.SpeechBubbleSizeCurve.Evaluate(v);
+        }
     }
 }

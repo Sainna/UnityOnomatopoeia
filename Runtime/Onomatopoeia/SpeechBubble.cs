@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SpeechBubble : MonoBehaviour
+namespace Sainna.Onomatopoeia
 {
+    public class SpeechBubble : MonoBehaviour
+    {
 
-    public Onomatopoeia OwningOnomatopoeia {get; set;} = null;
+        public Onomatopoeia OwningOnomatopoeia { get; set; } = null;
+    }
 }

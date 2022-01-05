@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BezierSurfaceFromSingle : BezierSurface
+namespace Sainna.Onomatopoeia
 {
-    
-    //[SerializeField] private BezierCurve _Curves;
-    // Start is called before the first frame update
-    void Start()
+    public class BezierSurfaceFromSingle : BezierSurface
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //[SerializeField] private BezierCurve _Curves;
+        // Start is called before the first frame update
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }
