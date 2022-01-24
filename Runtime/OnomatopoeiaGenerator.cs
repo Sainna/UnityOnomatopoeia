@@ -44,35 +44,33 @@ namespace Sainna.Onomatopoeia
         //     return rot;
         // }
 
-        public Onomatopoeia OnomatopoeiaAt(Vector3 pos, Quaternion rot, GameObject onoPrefab)
-        {
+        public Onomatopoeia OnomatopoeiaAt(Vector3 pos, Quaternion rot, GameObject onoPrefab, Onomatopoeia.FacePlayerType facePlayerInfo) {
             Onomatopoeia ono = Instantiate(onoPrefab, pos, rot).GetComponentInChildren<Onomatopoeia>();
 
-            ono.TextFacePlayer(_TransformToFace, _FacePlayerInfo);
+            ono.TextFacePlayer(_TransformToFace, facePlayerInfo);
 
             ono.StartAnimation();
             return ono;
         }
 
-
-        public Onomatopoeia OnomatopoeiaAt(Vector3 pos)
-        {
-            return OnomatopoeiaAt(pos, Quaternion.identity, _DefaultOnomatopoeiaPrefab);
+        public Onomatopoeia OnomatopoeiaAt(Vector3 pos, Quaternion rot, GameObject onoPrefab) {
+            return OnomatopoeiaAt(pos, rot, onoPrefab, _FacePlayerInfo);
         }
 
-        public Onomatopoeia OnomatopoeiaAt(Vector3 pos, Quaternion rot)
-        {
-            return OnomatopoeiaAt(pos, rot, _DefaultOnomatopoeiaPrefab);
+        public Onomatopoeia OnomatopoeiaAt(Vector3 pos) {
+            return OnomatopoeiaAt(pos, Quaternion.identity, _DefaultOnomatopoeiaPrefab, _FacePlayerInfo);
         }
 
-        public Onomatopoeia OnomatopoeiaAt(Vector3 pos, GameObject onoPrefab)
-        {
-            return OnomatopoeiaAt(pos, Quaternion.identity, onoPrefab);
+        public Onomatopoeia OnomatopoeiaAt(Vector3 pos, Quaternion rot) {
+            return OnomatopoeiaAt(pos, rot, _DefaultOnomatopoeiaPrefab, _FacePlayerInfo);
         }
 
-        public Onomatopoeia OnomatopoeiaAtTransform()
-        {
-            return OnomatopoeiaAt(transform.position, Quaternion.identity, _DefaultOnomatopoeiaPrefab);
+        public Onomatopoeia OnomatopoeiaAt(Vector3 pos, GameObject onoPrefab) {
+            return OnomatopoeiaAt(pos, Quaternion.identity, onoPrefab, _FacePlayerInfo);
+        }
+
+        public Onomatopoeia OnomatopoeiaAtTransform() {
+            return OnomatopoeiaAt(transform.position, Quaternion.identity, _DefaultOnomatopoeiaPrefab, _FacePlayerInfo);
         }
     }
 }
