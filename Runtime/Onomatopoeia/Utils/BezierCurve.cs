@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Sainna.Onomatopoeia
 {
@@ -25,10 +21,12 @@ namespace Sainna.Onomatopoeia
                 Gizmos.DrawSphere(GetPosition(i), 0.035f);
             }
 
-            Handles.DrawBezier(GetPosition(0), GetPosition(3), GetPosition(1), GetPosition(2),
-                Color.magenta,
-                Texture2D.whiteTexture, 
-                1f);
+            
+            //todo: move to editor script
+            // Handles.DrawBezier(GetPosition(0), GetPosition(3), GetPosition(1), GetPosition(2),
+            //     Color.magenta,
+            //     Texture2D.whiteTexture, 
+            //     1f);
 
             var testPoint = GetBezierPoint(tTest);
 
