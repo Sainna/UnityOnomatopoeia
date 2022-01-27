@@ -27,7 +27,7 @@ namespace Sainna.Onomatopoeia
 
             Handles.DrawBezier(GetPosition(0), GetPosition(3), GetPosition(1), GetPosition(2),
                 Color.magenta,
-                EditorGUIUtility.whiteTexture,
+                Texture2D.whiteTexture, 
                 1f);
 
             var testPoint = GetBezierPoint(tTest);

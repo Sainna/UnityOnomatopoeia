@@ -1,6 +1,6 @@
 {
   "name": "moe.sainna.onomatopoeia",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "displayName": "Onomatopoeia",
   "description": "Create and display onomatopoeia in Unity",
   "unity": "2019.1",
